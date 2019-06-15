@@ -1,0 +1,2251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARCHIVOS">
+          <Key>
+            <PropertyRef Name="CODIGOPDF" />
+          </Key>
+          <Property Name="CODIGOPDF" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBREPDF" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ARCHIVOPDF" Type="blob" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAUSAS">
+          <Key>
+            <PropertyRef Name="ID_CAUSA" />
+          </Key>
+          <Property Name="ID_CAUSA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROL" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="CARATULA" Type="date" Nullable="false" />
+          <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_TRIBUNAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITA_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_CITA" />
+          </Key>
+          <Property Name="ID_ESTADO_CITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITAS">
+          <Key>
+            <PropertyRef Name="ID_CITA" />
+          </Key>
+          <Property Name="ID_CITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="date" Nullable="false" />
+          <Property Name="ID_NOTARIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ESTADO_CITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMUNA">
+          <Key>
+            <PropertyRef Name="ID_COMUNA" />
+          </Key>
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ID_PROVINCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATO_DETALLES">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_CONTRATO" />
+          </Key>
+          <Property Name="ID_DETALLE_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SERVICIO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="MONTO" Type="number" Precision="11" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATO_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO_ESTADO" />
+          </Key>
+          <Property Name="ID_CONTRATO_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATOS">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO" />
+          </Key>
+          <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
+          <Property Name="FECHA_TERMINO" Type="date" Nullable="false" />
+          <Property Name="ID_CONTRATO_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_DETALLE_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PRESUPUESTO" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_ABOGADO" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_PLAN_PAGO" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+          <Property Name="APROBADO_ABOGADO" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="APROBADO_CLIENTE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID_FORMA_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONTRATOS_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO" />
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+        </EntityType>
+        <EntityType Name="DILIGENCIAS">
+          <Key>
+            <PropertyRef Name="ID_DILIGENCIA" />
+          </Key>
+          <Property Name="ID_DILIGENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="2048" Nullable="false" />
+          <Property Name="ID_CAUSA" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="DOC_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_DOC" />
+          </Key>
+          <Property Name="ID_ESTADO_DOC" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="URL" Type="varchar2" MaxLength="2048" Nullable="false" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTOS_CITAS">
+          <Key>
+            <PropertyRef Name="ID_CITA" />
+          </Key>
+          <Property Name="ID_CITA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ESTADO_DOC" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPRESA_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPRESAS">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="50" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="TELEFONO" Type="number" Precision="9" Scale="0" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="ID_FORMA_PAGO" />
+          </Key>
+          <Property Name="ID_FORMA_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CANTIDAD_CUOTAS" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTARIAS">
+          <Key>
+            <PropertyRef Name="ID_NOTARIA" />
+          </Key>
+          <Property Name="ID_NOTARIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar2" MaxLength="50" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="TELEFONO" Type="number" Precision="9" Scale="0" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+        </EntityType>
+        <EntityType Name="NOTARIAS_USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_NOTARIA" />
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_NOTARIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAGOS">
+          <Key>
+            <PropertyRef Name="ID_PAGO" />
+          </Key>
+          <Property Name="ID_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="date" Nullable="false" />
+          <Property Name="MONTO" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+          <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PLAN_PAGO">
+          <Key>
+            <PropertyRef Name="ID_PLAN_PAGO" />
+          </Key>
+          <Property Name="ID_PLAN_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRESUPUESTO_DETALLES">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
+          </Key>
+          <Property Name="ID_DETALLE_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SERVICIO" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="MONTO" Type="number" Precision="11" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRESUPUESTO_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_PRESUPUESTO" />
+          </Key>
+          <Property Name="ID_ESTADO_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRESUPUESTOS">
+          <Key>
+            <PropertyRef Name="ID_PRESUPUESTO" />
+          </Key>
+          <Property Name="ID_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="ID_ESTADO_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_DETALLE_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+          <Property Name="ID_SOLICITUD" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_TECNICO" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_PLAN_PAGO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="PROVINCIA">
+          <Key>
+            <PropertyRef Name="ID_PROVINCIA" />
+          </Key>
+          <Property Name="ID_PROVINCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="ID_REGION" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="ID_REGION" />
+          </Key>
+          <Property Name="ID_REGION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar2" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+          </Key>
+          <Property Name="ID_ESTADO_SOLICITUD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_TIPOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_SOLICITUD" />
+          </Key>
+          <Property Name="ID_TIPO_SOLICITUD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SOLICITUDES">
+          <Key>
+            <PropertyRef Name="ID_SOLICITUD" />
+          </Key>
+          <Property Name="ID_SOLICITUD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="date" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="2048" Nullable="false" />
+          <Property Name="ID_TIPO_SOLICITUD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ESTADO_SOLICITUD" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+          <Property Name="ID_CLIENTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_TECNICO" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TRIBUNAL">
+          <Key>
+            <PropertyRef Name="ID_TRIBUNAL" />
+          </Key>
+          <Property Name="ID_TRIBUNAL" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="13" Nullable="false" />
+          <Property Name="PATERNO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="MATERNO" Type="varchar2" MaxLength="50" />
+          <Property Name="NOMBRES" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="F_NAC" Type="date" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="CELULAR" Type="number" Precision="9" Scale="0" />
+          <Property Name="TELEFONO" Type="number" Precision="9" Scale="0" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" />
+          <Property Name="ACTIVO" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID_ROL" Type="number" Precision="38" Scale="0" />
+          <Property Name="CREADO" Type="date" Nullable="false" />
+          <Property Name="MODIFICADO" Type="date" />
+        </EntityType>
+        <Association Name="ABOGADO_CONTRATOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_ABOGADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CAUSA_TRIBUNAL">
+          <End Role="TRIBUNAL" Type="Self.TRIBUNAL" Multiplicity="1" />
+          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRIBUNAL">
+              <PropertyRef Name="ID_TRIBUNAL" />
+            </Principal>
+            <Dependent Role="CAUSAS">
+              <PropertyRef Name="ID_TRIBUNAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CAUSAS_DILIGENCIAS">
+          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="0..1" />
+          <End Role="DILIGENCIAS" Type="Self.DILIGENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAUSAS">
+              <PropertyRef Name="ID_CAUSA" />
+            </Principal>
+            <Dependent Role="DILIGENCIAS">
+              <PropertyRef Name="ID_CAUSA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CITA_DOCS_CITA">
+          <End Role="CITAS" Type="Self.CITAS" Multiplicity="1" />
+          <End Role="DOCUMENTOS_CITAS" Type="Self.DOCUMENTOS_CITAS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CITAS">
+              <PropertyRef Name="ID_CITA" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS_CITAS">
+              <PropertyRef Name="ID_CITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CITA_ESTADO_CITA">
+          <End Role="CITA_ESTADOS" Type="Self.CITA_ESTADOS" Multiplicity="1" />
+          <End Role="CITAS" Type="Self.CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITA_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_CITA" />
+            </Principal>
+            <Dependent Role="CITAS">
+              <PropertyRef Name="ID_ESTADO_CITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CITA_NOTARIAS">
+          <End Role="NOTARIAS" Type="Self.NOTARIAS" Multiplicity="1" />
+          <End Role="CITAS" Type="Self.CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTARIAS">
+              <PropertyRef Name="ID_NOTARIA" />
+            </Principal>
+            <Dependent Role="CITAS">
+              <PropertyRef Name="ID_NOTARIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CIUDAD_COMUNA">
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="COMUNA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_CONTRATO_CLIENTES">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CONTRATOS_CLIENTES">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTES_SOLICITUDES">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CAUSAS">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
+          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="CAUSAS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CONTRATOS_CLIENTES">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
+          <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATOS_CLIENTES">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_DOCUMENTOS">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
+          <End Role="DOCUMENTOS" Type="Self.DOCUMENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_FORMA_PAGO">
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMA_PAGO">
+              <PropertyRef Name="ID_FORMA_PAGO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_FORMA_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PAGOS">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="0..1" />
+          <End Role="PAGOS" Type="Self.PAGOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="PAGOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PLAN_PAGO">
+          <End Role="PLAN_PAGO" Type="Self.PLAN_PAGO" Multiplicity="0..1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_PAGO">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATOS_CONTRATO_DETALLE">
+          <End Role="CONTRATO_DETALLES" Type="Self.CONTRATO_DETALLES" Multiplicity="1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO_DETALLES">
+              <PropertyRef Name="ID_DETALLE_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_DETALLE_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATOS_CONTRATO_ESTADO">
+          <End Role="CONTRATO_ESTADOS" Type="Self.CONTRATO_ESTADOS" Multiplicity="1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO_ESTADOS">
+              <PropertyRef Name="ID_CONTRATO_ESTADO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOC_CITA_DOC_ESTADO">
+          <End Role="DOC_ESTADOS" Type="Self.DOC_ESTADOS" Multiplicity="1" />
+          <End Role="DOCUMENTOS_CITAS" Type="Self.DOCUMENTOS_CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOC_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_DOC" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS_CITAS">
+              <PropertyRef Name="ID_ESTADO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOC_DOC_CITAS">
+          <End Role="DOCUMENTOS" Type="Self.DOCUMENTOS" Multiplicity="1" />
+          <End Role="DOCUMENTOS_CITAS" Type="Self.DOCUMENTOS_CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTOS">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS_CITAS">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_CLIENTE_CONTRATO">
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="1" />
+          <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="CONTRATOS_CLIENTES">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_CLIENTES_EMPRESAS_FK">
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="1" />
+          <End Role="EMPRESA_CLIENTES" Type="Self.EMPRESA_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="EMPRESA_CLIENTES">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_CLIENTES_USUARIOS_FK">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="EMPRESA_CLIENTES" Type="Self.EMPRESA_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="EMPRESA_CLIENTES">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="EMPRESAS">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NOTARIA_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
+          <End Role="NOTARIAS" Type="Self.NOTARIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="NOTARIAS">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESU_PRESUPUESTO_DETALLE">
+          <End Role="PRESUPUESTO_DETALLES" Type="Self.PRESUPUESTO_DETALLES" Multiplicity="1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRESUPUESTO_DETALLES">
+              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESU_PRESUPUESTO_ESTADO">
+          <End Role="PRESUPUESTO_ESTADOS" Type="Self.PRESUPUESTO_ESTADOS" Multiplicity="1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRESUPUESTO_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_PRESUPUESTO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_ESTADO_PRESUPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESUPUESTO_CONTRATO">
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="0..1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_PRESUPUESTO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_PRESUPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESUPUESTO_PLAN_PAGO">
+          <End Role="PLAN_PAGO" Type="Self.PLAN_PAGO" Multiplicity="0..1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_PAGO">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGION_CIUDAD">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="PROVINCIA">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ROL_USUARIOS">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUDES_PRESUPUESTOS">
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="0..1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUDES">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUDES_SOLICITUD_ESTADO">
+          <End Role="SOLICITUD_ESTADOS" Type="Self.SOLICITUD_ESTADOS" Multiplicity="1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUDES_SOLICITUD_TIPO">
+          <End Role="SOLICITUD_TIPOS" Type="Self.SOLICITUD_TIPOS" Multiplicity="1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_TIPOS">
+              <PropertyRef Name="ID_TIPO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_TIPO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TECNICO_PRESUPUESTOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_TECNICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TECNICO_SOLICITUDES">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_TECNICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRIBUNAL_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="TRIBUNAL" Type="Self.TRIBUNAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="TRIBUNAL">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIOS_NOTARIAS_FK">
+          <End Role="NOTARIAS" Type="Self.NOTARIAS" Multiplicity="1" />
+          <End Role="NOTARIAS_USUARIOS" Type="Self.NOTARIAS_USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTARIAS">
+              <PropertyRef Name="ID_NOTARIA" />
+            </Principal>
+            <Dependent Role="NOTARIAS_USUARIOS">
+              <PropertyRef Name="ID_NOTARIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIOS_USUARIOS_FK">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="NOTARIAS_USUARIOS" Type="Self.NOTARIAS_USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="NOTARIAS_USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ARCHIVOS" EntityType="Self.ARCHIVOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CAUSAS" EntityType="Self.CAUSAS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CITA_ESTADOS" EntityType="Self.CITA_ESTADOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CITAS" EntityType="Self.CITAS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CONTRATO_DETALLES" EntityType="Self.CONTRATO_DETALLES" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CONTRATO_ESTADOS" EntityType="Self.CONTRATO_ESTADOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CONTRATOS" EntityType="Self.CONTRATOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="CONTRATOS_CLIENTES" EntityType="Self.CONTRATOS_CLIENTES" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="DILIGENCIAS" EntityType="Self.DILIGENCIAS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="DOC_ESTADOS" EntityType="Self.DOC_ESTADOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTOS" EntityType="Self.DOCUMENTOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTOS_CITAS" EntityType="Self.DOCUMENTOS_CITAS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="EMPRESA_CLIENTES" EntityType="Self.EMPRESA_CLIENTES" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="EMPRESAS" EntityType="Self.EMPRESAS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="NOTARIAS" EntityType="Self.NOTARIAS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="NOTARIAS_USUARIOS" EntityType="Self.NOTARIAS_USUARIOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PAGOS" EntityType="Self.PAGOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PLAN_PAGO" EntityType="Self.PLAN_PAGO" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PRESUPUESTO_DETALLES" EntityType="Self.PRESUPUESTO_DETALLES" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PRESUPUESTO_ESTADOS" EntityType="Self.PRESUPUESTO_ESTADOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PRESUPUESTOS" EntityType="Self.PRESUPUESTOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="SOLICITUD_ESTADOS" EntityType="Self.SOLICITUD_ESTADOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="SOLICITUD_TIPOS" EntityType="Self.SOLICITUD_TIPOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="SOLICITUDES" EntityType="Self.SOLICITUDES" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="TRIBUNAL" EntityType="Self.TRIBUNAL" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="LEX" store:Type="Tables" />
+          <AssociationSet Name="ABOGADO_CONTRATOS" Association="Self.ABOGADO_CONTRATOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CAUSA_TRIBUNAL" Association="Self.CAUSA_TRIBUNAL">
+            <End Role="TRIBUNAL" EntitySet="TRIBUNAL" />
+            <End Role="CAUSAS" EntitySet="CAUSAS" />
+          </AssociationSet>
+          <AssociationSet Name="CAUSAS_DILIGENCIAS" Association="Self.CAUSAS_DILIGENCIAS">
+            <End Role="CAUSAS" EntitySet="CAUSAS" />
+            <End Role="DILIGENCIAS" EntitySet="DILIGENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="CITA_DOCS_CITA" Association="Self.CITA_DOCS_CITA">
+            <End Role="CITAS" EntitySet="CITAS" />
+            <End Role="DOCUMENTOS_CITAS" EntitySet="DOCUMENTOS_CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="CITA_ESTADO_CITA" Association="Self.CITA_ESTADO_CITA">
+            <End Role="CITA_ESTADOS" EntitySet="CITA_ESTADOS" />
+            <End Role="CITAS" EntitySet="CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="CITA_NOTARIAS" Association="Self.CITA_NOTARIAS">
+            <End Role="NOTARIAS" EntitySet="NOTARIAS" />
+            <End Role="CITAS" EntitySet="CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="CIUDAD_COMUNA" Association="Self.CIUDAD_COMUNA">
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+            <End Role="COMUNA" EntitySet="COMUNA" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_CONTRATO_CLIENTES" Association="Self.CLIENTE_CONTRATO_CLIENTES">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTES_SOLICITUDES" Association="Self.CLIENTES_SOLICITUDES">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CAUSAS" Association="Self.CONTRATO_CAUSAS">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="CAUSAS" EntitySet="CAUSAS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CONTRATOS_CLIENTES" Association="Self.CONTRATO_CONTRATOS_CLIENTES">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_DOCUMENTOS" Association="Self.CONTRATO_DOCUMENTOS">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="DOCUMENTOS" EntitySet="DOCUMENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_FORMA_PAGO" Association="Self.CONTRATO_FORMA_PAGO">
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PAGOS" Association="Self.CONTRATO_PAGOS">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="PAGOS" EntitySet="PAGOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PLAN_PAGO" Association="Self.CONTRATO_PLAN_PAGO">
+            <End Role="PLAN_PAGO" EntitySet="PLAN_PAGO" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATOS_CONTRATO_DETALLE" Association="Self.CONTRATOS_CONTRATO_DETALLE">
+            <End Role="CONTRATO_DETALLES" EntitySet="CONTRATO_DETALLES" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATOS_CONTRATO_ESTADO" Association="Self.CONTRATOS_CONTRATO_ESTADO">
+            <End Role="CONTRATO_ESTADOS" EntitySet="CONTRATO_ESTADOS" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="DOC_CITA_DOC_ESTADO" Association="Self.DOC_CITA_DOC_ESTADO">
+            <End Role="DOC_ESTADOS" EntitySet="DOC_ESTADOS" />
+            <End Role="DOCUMENTOS_CITAS" EntitySet="DOCUMENTOS_CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="DOC_DOC_CITAS" Association="Self.DOC_DOC_CITAS">
+            <End Role="DOCUMENTOS" EntitySet="DOCUMENTOS" />
+            <End Role="DOCUMENTOS_CITAS" EntitySet="DOCUMENTOS_CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_CLIENTE_CONTRATO" Association="Self.EMPRESA_CLIENTE_CONTRATO">
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+            <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_CLIENTES_EMPRESAS_FK" Association="Self.EMPRESA_CLIENTES_EMPRESAS_FK">
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+            <End Role="EMPRESA_CLIENTES" EntitySet="EMPRESA_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_CLIENTES_USUARIOS_FK" Association="Self.EMPRESA_CLIENTES_USUARIOS_FK">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="EMPRESA_CLIENTES" EntitySet="EMPRESA_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_COMUNA" Association="Self.EMPRESA_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+          </AssociationSet>
+          <AssociationSet Name="NOTARIA_COMUNA" Association="Self.NOTARIA_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="NOTARIAS" EntitySet="NOTARIAS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESU_PRESUPUESTO_DETALLE" Association="Self.PRESU_PRESUPUESTO_DETALLE">
+            <End Role="PRESUPUESTO_DETALLES" EntitySet="PRESUPUESTO_DETALLES" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESU_PRESUPUESTO_ESTADO" Association="Self.PRESU_PRESUPUESTO_ESTADO">
+            <End Role="PRESUPUESTO_ESTADOS" EntitySet="PRESUPUESTO_ESTADOS" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESUPUESTO_CONTRATO" Association="Self.PRESUPUESTO_CONTRATO">
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESUPUESTO_PLAN_PAGO" Association="Self.PRESUPUESTO_PLAN_PAGO">
+            <End Role="PLAN_PAGO" EntitySet="PLAN_PAGO" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="REGION_CIUDAD" Association="Self.REGION_CIUDAD">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+          </AssociationSet>
+          <AssociationSet Name="ROL_USUARIOS" Association="Self.ROL_USUARIOS">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUDES_PRESUPUESTOS" Association="Self.SOLICITUDES_PRESUPUESTOS">
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUDES_SOLICITUD_ESTADO" Association="Self.SOLICITUDES_SOLICITUD_ESTADO">
+            <End Role="SOLICITUD_ESTADOS" EntitySet="SOLICITUD_ESTADOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUDES_SOLICITUD_TIPO" Association="Self.SOLICITUDES_SOLICITUD_TIPO">
+            <End Role="SOLICITUD_TIPOS" EntitySet="SOLICITUD_TIPOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="TECNICO_PRESUPUESTOS" Association="Self.TECNICO_PRESUPUESTOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TECNICO_SOLICITUDES" Association="Self.TECNICO_SOLICITUDES">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="TRIBUNAL_COMUNA" Association="Self.TRIBUNAL_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="TRIBUNAL" EntitySet="TRIBUNAL" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOS_NOTARIAS_FK" Association="Self.USUARIOS_NOTARIAS_FK">
+            <End Role="NOTARIAS" EntitySet="NOTARIAS" />
+            <End Role="NOTARIAS_USUARIOS" EntitySet="NOTARIAS_USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOS_USUARIOS_FK" Association="Self.USUARIOS_USUARIOS_FK">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="NOTARIAS_USUARIOS" EntitySet="NOTARIAS_USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ARCHIVOS">
+          <Key>
+            <PropertyRef Name="CODIGOPDF" />
+          </Key>
+          <Property Name="CODIGOPDF" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBREPDF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ARCHIVOPDF" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CAUSAS">
+          <Key>
+            <PropertyRef Name="ID_CAUSA" />
+          </Key>
+          <Property Name="ID_CAUSA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ROL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" />
+          <Property Name="CARATULA" Type="DateTime" Nullable="false" />
+          <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_TRIBUNAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TRIBUNAL" Relationship="Self.CAUSA_TRIBUNAL" FromRole="CAUSAS" ToRole="TRIBUNAL" />
+          <NavigationProperty Name="DILIGENCIAS" Relationship="Self.CAUSAS_DILIGENCIAS" FromRole="CAUSAS" ToRole="DILIGENCIAS" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_CAUSAS" FromRole="CAUSAS" ToRole="CONTRATOS" />
+        </EntityType>
+        <EntityType Name="CITA_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_CITA" />
+          </Key>
+          <Property Name="ID_ESTADO_CITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CITAS" Relationship="Self.CITA_ESTADO_CITA" FromRole="CITA_ESTADOS" ToRole="CITAS" />
+        </EntityType>
+        <EntityType Name="CITAS">
+          <Key>
+            <PropertyRef Name="ID_CITA" />
+          </Key>
+          <Property Name="ID_CITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="DateTime" Nullable="false" />
+          <Property Name="ID_NOTARIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ESTADO_CITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CITA_ESTADOS" Relationship="Self.CITA_ESTADO_CITA" FromRole="CITAS" ToRole="CITA_ESTADOS" />
+          <NavigationProperty Name="DOCUMENTOS_CITAS" Relationship="Self.CITA_DOCS_CITA" FromRole="CITAS" ToRole="DOCUMENTOS_CITAS" />
+          <NavigationProperty Name="NOTARIAS" Relationship="Self.CITA_NOTARIAS" FromRole="CITAS" ToRole="NOTARIAS" />
+        </EntityType>
+        <EntityType Name="COMUNA">
+          <Key>
+            <PropertyRef Name="ID_COMUNA" />
+          </Key>
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PROVINCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PROVINCIA" Relationship="Self.CIUDAD_COMUNA" FromRole="COMUNA" ToRole="PROVINCIA" />
+          <NavigationProperty Name="EMPRESAS" Relationship="Self.EMPRESA_COMUNA" FromRole="COMUNA" ToRole="EMPRESAS" />
+          <NavigationProperty Name="NOTARIAS" Relationship="Self.NOTARIA_COMUNA" FromRole="COMUNA" ToRole="NOTARIAS" />
+          <NavigationProperty Name="TRIBUNAL" Relationship="Self.TRIBUNAL_COMUNA" FromRole="COMUNA" ToRole="TRIBUNAL" />
+        </EntityType>
+        <EntityType Name="CONTRATO_DETALLES">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_CONTRATO" />
+          </Key>
+          <Property Name="ID_DETALLE_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SERVICIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATOS_CONTRATO_DETALLE" FromRole="CONTRATO_DETALLES" ToRole="CONTRATOS" />
+        </EntityType>
+        <EntityType Name="CONTRATO_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO_ESTADO" />
+          </Key>
+          <Property Name="ID_CONTRATO_ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATOS_CONTRATO_ESTADO" FromRole="CONTRATO_ESTADOS" ToRole="CONTRATOS" />
+        </EntityType>
+        <EntityType Name="CONTRATOS">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO" />
+          </Key>
+          <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
+          <Property Name="ID_CONTRATO_ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_DETALLE_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_ABOGADO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_PLAN_PAGO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <Property Name="APROBADO_ABOGADO" Type="Int16" Nullable="false" />
+          <Property Name="APROBADO_CLIENTE" Type="Int16" Nullable="false" />
+          <Property Name="ID_FORMA_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CAUSAS" Relationship="Self.CONTRATO_CAUSAS" FromRole="CONTRATOS" ToRole="CAUSAS" />
+          <NavigationProperty Name="CONTRATO_DETALLES" Relationship="Self.CONTRATOS_CONTRATO_DETALLE" FromRole="CONTRATOS" ToRole="CONTRATO_DETALLES" />
+          <NavigationProperty Name="CONTRATO_ESTADOS" Relationship="Self.CONTRATOS_CONTRATO_ESTADO" FromRole="CONTRATOS" ToRole="CONTRATO_ESTADOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.ABOGADO_CONTRATOS" FromRole="CONTRATOS" ToRole="USUARIOS" />
+          <NavigationProperty Name="CONTRATOS_CLIENTES" Relationship="Self.CONTRATO_CONTRATOS_CLIENTES" FromRole="CONTRATOS" ToRole="CONTRATOS_CLIENTES" />
+          <NavigationProperty Name="DOCUMENTOS" Relationship="Self.CONTRATO_DOCUMENTOS" FromRole="CONTRATOS" ToRole="DOCUMENTOS" />
+          <NavigationProperty Name="FORMA_PAGO" Relationship="Self.CONTRATO_FORMA_PAGO" FromRole="CONTRATOS" ToRole="FORMA_PAGO" />
+          <NavigationProperty Name="PAGOS" Relationship="Self.CONTRATO_PAGOS" FromRole="CONTRATOS" ToRole="PAGOS" />
+          <NavigationProperty Name="PLAN_PAGO" Relationship="Self.CONTRATO_PLAN_PAGO" FromRole="CONTRATOS" ToRole="PLAN_PAGO" />
+          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.PRESUPUESTO_CONTRATO" FromRole="CONTRATOS" ToRole="PRESUPUESTOS" />
+        </EntityType>
+        <EntityType Name="CONTRATOS_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CONTRATO" />
+            <PropertyRef Name="ID_USUARIO" />
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_CONTRATOS_CLIENTES" FromRole="CONTRATOS_CLIENTES" ToRole="CONTRATOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.CLIENTE_CONTRATO_CLIENTES" FromRole="CONTRATOS_CLIENTES" ToRole="USUARIOS" />
+          <NavigationProperty Name="EMPRESAS" Relationship="Self.EMPRESA_CLIENTE_CONTRATO" FromRole="CONTRATOS_CLIENTES" ToRole="EMPRESAS" />
+        </EntityType>
+        <EntityType Name="DILIGENCIAS">
+          <Key>
+            <PropertyRef Name="ID_DILIGENCIA" />
+          </Key>
+          <Property Name="ID_DILIGENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_CAUSA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CAUSAS" Relationship="Self.CAUSAS_DILIGENCIAS" FromRole="DILIGENCIAS" ToRole="CAUSAS" />
+        </EntityType>
+        <EntityType Name="DOC_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_DOC" />
+          </Key>
+          <Property Name="ID_ESTADO_DOC" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DOCUMENTOS_CITAS" Relationship="Self.DOC_CITA_DOC_ESTADO" FromRole="DOC_ESTADOS" ToRole="DOCUMENTOS_CITAS" />
+        </EntityType>
+        <EntityType Name="DOCUMENTOS">
+          <Key>
+            <PropertyRef Name="ID_DOCUMENTO" />
+          </Key>
+          <Property Name="ID_DOCUMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_DOCUMENTOS" FromRole="DOCUMENTOS" ToRole="CONTRATOS" />
+          <NavigationProperty Name="DOCUMENTOS_CITAS" Relationship="Self.DOC_DOC_CITAS" FromRole="DOCUMENTOS" ToRole="DOCUMENTOS_CITAS" />
+        </EntityType>
+        <EntityType Name="DOCUMENTOS_CITAS">
+          <Key>
+            <PropertyRef Name="ID_CITA" />
+          </Key>
+          <Property Name="ID_CITA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_DOCUMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ESTADO_DOC" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CITAS" Relationship="Self.CITA_DOCS_CITA" FromRole="DOCUMENTOS_CITAS" ToRole="CITAS" />
+          <NavigationProperty Name="DOC_ESTADOS" Relationship="Self.DOC_CITA_DOC_ESTADO" FromRole="DOCUMENTOS_CITAS" ToRole="DOC_ESTADOS" />
+          <NavigationProperty Name="DOCUMENTOS" Relationship="Self.DOC_DOC_CITAS" FromRole="DOCUMENTOS_CITAS" ToRole="DOCUMENTOS" />
+        </EntityType>
+        <EntityType Name="EMPRESAS">
+          <Key>
+            <PropertyRef Name="ID_EMPRESA" />
+          </Key>
+          <Property Name="ID_EMPRESA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="Int32" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.EMPRESA_COMUNA" FromRole="EMPRESAS" ToRole="COMUNA" />
+          <NavigationProperty Name="CONTRATOS_CLIENTES" Relationship="Self.EMPRESA_CLIENTE_CONTRATO" FromRole="EMPRESAS" ToRole="CONTRATOS_CLIENTES" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.EMPRESA_CLIENTES" FromRole="EMPRESAS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="ID_FORMA_PAGO" />
+          </Key>
+          <Property Name="ID_FORMA_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANTIDAD_CUOTAS" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_FORMA_PAGO" FromRole="FORMA_PAGO" ToRole="CONTRATOS" />
+        </EntityType>
+        <EntityType Name="NOTARIAS">
+          <Key>
+            <PropertyRef Name="ID_NOTARIA" />
+          </Key>
+          <Property Name="ID_NOTARIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="Int32" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <NavigationProperty Name="CITAS" Relationship="Self.CITA_NOTARIAS" FromRole="NOTARIAS" ToRole="CITAS" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.NOTARIA_COMUNA" FromRole="NOTARIAS" ToRole="COMUNA" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.NOTARIAS_USUARIOS" FromRole="NOTARIAS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="PAGOS">
+          <Key>
+            <PropertyRef Name="ID_PAGO" />
+          </Key>
+          <Property Name="ID_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="DateTime" Nullable="false" />
+          <Property Name="MONTO" Type="Int64" Nullable="false" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_PAGOS" FromRole="PAGOS" ToRole="CONTRATOS" />
+        </EntityType>
+        <EntityType Name="PLAN_PAGO">
+          <Key>
+            <PropertyRef Name="ID_PLAN_PAGO" />
+          </Key>
+          <Property Name="ID_PLAN_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_PLAN_PAGO" FromRole="PLAN_PAGO" ToRole="CONTRATOS" />
+          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.PRESUPUESTO_PLAN_PAGO" FromRole="PLAN_PAGO" ToRole="PRESUPUESTOS" />
+        </EntityType>
+        <EntityType Name="PRESUPUESTO_DETALLES">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
+          </Key>
+          <Property Name="ID_DETALLE_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SERVICIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.PRESU_PRESUPUESTO_DETALLE" FromRole="PRESUPUESTO_DETALLES" ToRole="PRESUPUESTOS" />
+        </EntityType>
+        <EntityType Name="PRESUPUESTO_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_PRESUPUESTO" />
+          </Key>
+          <Property Name="ID_ESTADO_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.PRESU_PRESUPUESTO_ESTADO" FromRole="PRESUPUESTO_ESTADOS" ToRole="PRESUPUESTOS" />
+        </EntityType>
+        <EntityType Name="PRESUPUESTOS">
+          <Key>
+            <PropertyRef Name="ID_PRESUPUESTO" />
+          </Key>
+          <Property Name="ID_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" />
+          <Property Name="ID_ESTADO_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_DETALLE_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <Property Name="ID_SOLICITUD" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_TECNICO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_PLAN_PAGO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.PRESUPUESTO_CONTRATO" FromRole="PRESUPUESTOS" ToRole="CONTRATOS" />
+          <NavigationProperty Name="PLAN_PAGO" Relationship="Self.PRESUPUESTO_PLAN_PAGO" FromRole="PRESUPUESTOS" ToRole="PLAN_PAGO" />
+          <NavigationProperty Name="PRESUPUESTO_DETALLES" Relationship="Self.PRESU_PRESUPUESTO_DETALLE" FromRole="PRESUPUESTOS" ToRole="PRESUPUESTO_DETALLES" />
+          <NavigationProperty Name="PRESUPUESTO_ESTADOS" Relationship="Self.PRESU_PRESUPUESTO_ESTADO" FromRole="PRESUPUESTOS" ToRole="PRESUPUESTO_ESTADOS" />
+          <NavigationProperty Name="SOLICITUDES" Relationship="Self.SOLICITUDES_PRESUPUESTOS" FromRole="PRESUPUESTOS" ToRole="SOLICITUDES" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.TECNICO_PRESUPUESTOS" FromRole="PRESUPUESTOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="PROVINCIA">
+          <Key>
+            <PropertyRef Name="ID_PROVINCIA" />
+          </Key>
+          <Property Name="ID_PROVINCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.CIUDAD_COMUNA" FromRole="PROVINCIA" ToRole="COMUNA" />
+          <NavigationProperty Name="REGION" Relationship="Self.REGION_CIUDAD" FromRole="PROVINCIA" ToRole="REGION" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="ID_REGION" />
+          </Key>
+          <Property Name="ID_REGION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROVINCIA" Relationship="Self.REGION_CIUDAD" FromRole="REGION" ToRole="PROVINCIA" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.ROL_USUARIOS" FromRole="ROLES" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_ESTADOS">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+          </Key>
+          <Property Name="ID_ESTADO_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SOLICITUDES" Relationship="Self.SOLICITUDES_SOLICITUD_ESTADO" FromRole="SOLICITUD_ESTADOS" ToRole="SOLICITUDES" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_TIPOS">
+          <Key>
+            <PropertyRef Name="ID_TIPO_SOLICITUD" />
+          </Key>
+          <Property Name="ID_TIPO_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SOLICITUDES" Relationship="Self.SOLICITUDES_SOLICITUD_TIPO" FromRole="SOLICITUD_TIPOS" ToRole="SOLICITUDES" />
+        </EntityType>
+        <EntityType Name="SOLICITUDES">
+          <Key>
+            <PropertyRef Name="ID_SOLICITUD" />
+          </Key>
+          <Property Name="ID_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_HORA" Type="DateTime" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_TIPO_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_ESTADO_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <Property Name="ID_CLIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_TECNICO" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.SOLICITUDES_PRESUPUESTOS" FromRole="SOLICITUDES" ToRole="PRESUPUESTOS" />
+          <NavigationProperty Name="SOLICITUD_ESTADOS" Relationship="Self.SOLICITUDES_SOLICITUD_ESTADO" FromRole="SOLICITUDES" ToRole="SOLICITUD_ESTADOS" />
+          <NavigationProperty Name="SOLICITUD_TIPOS" Relationship="Self.SOLICITUDES_SOLICITUD_TIPO" FromRole="SOLICITUDES" ToRole="SOLICITUD_TIPOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.CLIENTES_SOLICITUDES" FromRole="SOLICITUDES" ToRole="USUARIOS" />
+          <NavigationProperty Name="USUARIOS1" Relationship="Self.TECNICO_SOLICITUDES" FromRole="SOLICITUDES" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="TRIBUNAL">
+          <Key>
+            <PropertyRef Name="ID_TRIBUNAL" />
+          </Key>
+          <Property Name="ID_TRIBUNAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CAUSAS" Relationship="Self.CAUSA_TRIBUNAL" FromRole="TRIBUNAL" ToRole="CAUSAS" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.TRIBUNAL_COMUNA" FromRole="TRIBUNAL" ToRole="COMUNA" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MATERNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_NAC" Type="DateTime" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CELULAR" Type="Int32" />
+          <Property Name="TELEFONO" Type="Int32" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVO" Type="Int16" Nullable="false" />
+          <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREADO" Type="DateTime" Nullable="false" />
+          <Property Name="MODIFICADO" Type="DateTime" />
+          <NavigationProperty Name="CONTRATOS" Relationship="Self.ABOGADO_CONTRATOS" FromRole="USUARIOS" ToRole="CONTRATOS" />
+          <NavigationProperty Name="CONTRATOS_CLIENTES" Relationship="Self.CLIENTE_CONTRATO_CLIENTES" FromRole="USUARIOS" ToRole="CONTRATOS_CLIENTES" />
+          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.TECNICO_PRESUPUESTOS" FromRole="USUARIOS" ToRole="PRESUPUESTOS" />
+          <NavigationProperty Name="ROLES" Relationship="Self.ROL_USUARIOS" FromRole="USUARIOS" ToRole="ROLES" />
+          <NavigationProperty Name="SOLICITUDES" Relationship="Self.CLIENTES_SOLICITUDES" FromRole="USUARIOS" ToRole="SOLICITUDES" />
+          <NavigationProperty Name="SOLICITUDES1" Relationship="Self.TECNICO_SOLICITUDES" FromRole="USUARIOS" ToRole="SOLICITUDES" />
+          <NavigationProperty Name="EMPRESAS" Relationship="Self.EMPRESA_CLIENTES" FromRole="USUARIOS" ToRole="EMPRESAS" />
+          <NavigationProperty Name="NOTARIAS" Relationship="Self.NOTARIAS_USUARIOS" FromRole="USUARIOS" ToRole="NOTARIAS" />
+        </EntityType>
+        <Association Name="CAUSA_TRIBUNAL">
+          <End Role="TRIBUNAL" Type="Self.TRIBUNAL" Multiplicity="1" />
+          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRIBUNAL">
+              <PropertyRef Name="ID_TRIBUNAL" />
+            </Principal>
+            <Dependent Role="CAUSAS">
+              <PropertyRef Name="ID_TRIBUNAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CAUSAS_DILIGENCIAS">
+          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="0..1" />
+          <End Role="DILIGENCIAS" Type="Self.DILIGENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAUSAS">
+              <PropertyRef Name="ID_CAUSA" />
+            </Principal>
+            <Dependent Role="DILIGENCIAS">
+              <PropertyRef Name="ID_CAUSA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CAUSAS">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
+          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="CAUSAS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CITA_ESTADO_CITA">
+          <End Role="CITA_ESTADOS" Type="Self.CITA_ESTADOS" Multiplicity="1" />
+          <End Role="CITAS" Type="Self.CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITA_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_CITA" />
+            </Principal>
+            <Dependent Role="CITAS">
+              <PropertyRef Name="ID_ESTADO_CITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CITA_DOCS_CITA">
+          <End Role="CITAS" Type="Self.CITAS" Multiplicity="1" />
+          <End Role="DOCUMENTOS_CITAS" Type="Self.DOCUMENTOS_CITAS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CITAS">
+              <PropertyRef Name="ID_CITA" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS_CITAS">
+              <PropertyRef Name="ID_CITA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CITA_NOTARIAS">
+          <End Role="NOTARIAS" Type="Self.NOTARIAS" Multiplicity="1" />
+          <End Role="CITAS" Type="Self.CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTARIAS">
+              <PropertyRef Name="ID_NOTARIA" />
+            </Principal>
+            <Dependent Role="CITAS">
+              <PropertyRef Name="ID_NOTARIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CIUDAD_COMUNA">
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="COMUNA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="EMPRESAS">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NOTARIA_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="0..1" />
+          <End Role="NOTARIAS" Type="Self.NOTARIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="NOTARIAS">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRIBUNAL_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="TRIBUNAL" Type="Self.TRIBUNAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="TRIBUNAL">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATOS_CONTRATO_DETALLE">
+          <End Role="CONTRATO_DETALLES" Type="Self.CONTRATO_DETALLES" Multiplicity="1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO_DETALLES">
+              <PropertyRef Name="ID_DETALLE_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_DETALLE_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATOS_CONTRATO_ESTADO">
+          <End Role="CONTRATO_ESTADOS" Type="Self.CONTRATO_ESTADOS" Multiplicity="1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATO_ESTADOS">
+              <PropertyRef Name="ID_CONTRATO_ESTADO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ABOGADO_CONTRATOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_ABOGADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_CONTRATOS_CLIENTES">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
+          <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="CONTRATOS_CLIENTES">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_DOCUMENTOS">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
+          <End Role="DOCUMENTOS" Type="Self.DOCUMENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_FORMA_PAGO">
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMA_PAGO">
+              <PropertyRef Name="ID_FORMA_PAGO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_FORMA_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PAGOS">
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="0..1" />
+          <End Role="PAGOS" Type="Self.PAGOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONTRATOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Principal>
+            <Dependent Role="PAGOS">
+              <PropertyRef Name="ID_CONTRATO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONTRATO_PLAN_PAGO">
+          <End Role="PLAN_PAGO" Type="Self.PLAN_PAGO" Multiplicity="0..1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_PAGO">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESUPUESTO_CONTRATO">
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="0..1" />
+          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_PRESUPUESTO" />
+            </Principal>
+            <Dependent Role="CONTRATOS">
+              <PropertyRef Name="ID_PRESUPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTE_CONTRATO_CLIENTES">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="CONTRATOS_CLIENTES">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_CLIENTE_CONTRATO">
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="1" />
+          <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESAS">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Principal>
+            <Dependent Role="CONTRATOS_CLIENTES">
+              <PropertyRef Name="ID_EMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOC_CITA_DOC_ESTADO">
+          <End Role="DOC_ESTADOS" Type="Self.DOC_ESTADOS" Multiplicity="1" />
+          <End Role="DOCUMENTOS_CITAS" Type="Self.DOCUMENTOS_CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOC_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_DOC" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS_CITAS">
+              <PropertyRef Name="ID_ESTADO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DOC_DOC_CITAS">
+          <End Role="DOCUMENTOS" Type="Self.DOCUMENTOS" Multiplicity="1" />
+          <End Role="DOCUMENTOS_CITAS" Type="Self.DOCUMENTOS_CITAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCUMENTOS">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Principal>
+            <Dependent Role="DOCUMENTOS_CITAS">
+              <PropertyRef Name="ID_DOCUMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESUPUESTO_PLAN_PAGO">
+          <End Role="PLAN_PAGO" Type="Self.PLAN_PAGO" Multiplicity="0..1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_PAGO">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_PLAN_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESU_PRESUPUESTO_DETALLE">
+          <End Role="PRESUPUESTO_DETALLES" Type="Self.PRESUPUESTO_DETALLES" Multiplicity="1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRESUPUESTO_DETALLES">
+              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PRESU_PRESUPUESTO_ESTADO">
+          <End Role="PRESUPUESTO_ESTADOS" Type="Self.PRESUPUESTO_ESTADOS" Multiplicity="1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRESUPUESTO_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_PRESUPUESTO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_ESTADO_PRESUPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUDES_PRESUPUESTOS">
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="0..1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUDES">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TECNICO_PRESUPUESTOS">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="PRESUPUESTOS">
+              <PropertyRef Name="ID_TECNICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REGION_CIUDAD">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="PROVINCIA">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ROL_USUARIOS">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUDES_SOLICITUD_ESTADO">
+          <End Role="SOLICITUD_ESTADOS" Type="Self.SOLICITUD_ESTADOS" Multiplicity="1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_ESTADOS">
+              <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SOLICITUDES_SOLICITUD_TIPO">
+          <End Role="SOLICITUD_TIPOS" Type="Self.SOLICITUD_TIPOS" Multiplicity="1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_TIPOS">
+              <PropertyRef Name="ID_TIPO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_TIPO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CLIENTES_SOLICITUDES">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TECNICO_SOLICITUDES">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+          <End Role="SOLICITUDES" Type="Self.SOLICITUDES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="SOLICITUDES">
+              <PropertyRef Name="ID_TECNICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EMPRESA_CLIENTES">
+          <End Role="EMPRESAS" Type="Self.EMPRESAS" Multiplicity="*" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+        </Association>
+        <Association Name="NOTARIAS_USUARIOS">
+          <End Role="NOTARIAS" Type="Self.NOTARIAS" Multiplicity="*" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="LexEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ARCHIVOS" EntityType="Self.ARCHIVOS" />
+          <EntitySet Name="CAUSAS" EntityType="Self.CAUSAS" />
+          <EntitySet Name="CITA_ESTADOS" EntityType="Self.CITA_ESTADOS" />
+          <EntitySet Name="CITAS" EntityType="Self.CITAS" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" />
+          <EntitySet Name="CONTRATO_DETALLES" EntityType="Self.CONTRATO_DETALLES" />
+          <EntitySet Name="CONTRATO_ESTADOS" EntityType="Self.CONTRATO_ESTADOS" />
+          <EntitySet Name="CONTRATOS" EntityType="Self.CONTRATOS" />
+          <EntitySet Name="CONTRATOS_CLIENTES" EntityType="Self.CONTRATOS_CLIENTES" />
+          <EntitySet Name="DILIGENCIAS" EntityType="Self.DILIGENCIAS" />
+          <EntitySet Name="DOC_ESTADOS" EntityType="Self.DOC_ESTADOS" />
+          <EntitySet Name="DOCUMENTOS" EntityType="Self.DOCUMENTOS" />
+          <EntitySet Name="DOCUMENTOS_CITAS" EntityType="Self.DOCUMENTOS_CITAS" />
+          <EntitySet Name="EMPRESAS" EntityType="Self.EMPRESAS" />
+          <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" />
+          <EntitySet Name="NOTARIAS" EntityType="Self.NOTARIAS" />
+          <EntitySet Name="PAGOS" EntityType="Self.PAGOS" />
+          <EntitySet Name="PLAN_PAGO" EntityType="Self.PLAN_PAGO" />
+          <EntitySet Name="PRESUPUESTO_DETALLES" EntityType="Self.PRESUPUESTO_DETALLES" />
+          <EntitySet Name="PRESUPUESTO_ESTADOS" EntityType="Self.PRESUPUESTO_ESTADOS" />
+          <EntitySet Name="PRESUPUESTOS" EntityType="Self.PRESUPUESTOS" />
+          <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+          <EntitySet Name="SOLICITUD_ESTADOS" EntityType="Self.SOLICITUD_ESTADOS" />
+          <EntitySet Name="SOLICITUD_TIPOS" EntityType="Self.SOLICITUD_TIPOS" />
+          <EntitySet Name="SOLICITUDES" EntityType="Self.SOLICITUDES" />
+          <EntitySet Name="TRIBUNAL" EntityType="Self.TRIBUNAL" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <AssociationSet Name="CAUSA_TRIBUNAL" Association="Self.CAUSA_TRIBUNAL">
+            <End Role="TRIBUNAL" EntitySet="TRIBUNAL" />
+            <End Role="CAUSAS" EntitySet="CAUSAS" />
+          </AssociationSet>
+          <AssociationSet Name="CAUSAS_DILIGENCIAS" Association="Self.CAUSAS_DILIGENCIAS">
+            <End Role="CAUSAS" EntitySet="CAUSAS" />
+            <End Role="DILIGENCIAS" EntitySet="DILIGENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CAUSAS" Association="Self.CONTRATO_CAUSAS">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="CAUSAS" EntitySet="CAUSAS" />
+          </AssociationSet>
+          <AssociationSet Name="CITA_ESTADO_CITA" Association="Self.CITA_ESTADO_CITA">
+            <End Role="CITA_ESTADOS" EntitySet="CITA_ESTADOS" />
+            <End Role="CITAS" EntitySet="CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="CITA_DOCS_CITA" Association="Self.CITA_DOCS_CITA">
+            <End Role="CITAS" EntitySet="CITAS" />
+            <End Role="DOCUMENTOS_CITAS" EntitySet="DOCUMENTOS_CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="CITA_NOTARIAS" Association="Self.CITA_NOTARIAS">
+            <End Role="NOTARIAS" EntitySet="NOTARIAS" />
+            <End Role="CITAS" EntitySet="CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="CIUDAD_COMUNA" Association="Self.CIUDAD_COMUNA">
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+            <End Role="COMUNA" EntitySet="COMUNA" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_COMUNA" Association="Self.EMPRESA_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+          </AssociationSet>
+          <AssociationSet Name="NOTARIA_COMUNA" Association="Self.NOTARIA_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="NOTARIAS" EntitySet="NOTARIAS" />
+          </AssociationSet>
+          <AssociationSet Name="TRIBUNAL_COMUNA" Association="Self.TRIBUNAL_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="TRIBUNAL" EntitySet="TRIBUNAL" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATOS_CONTRATO_DETALLE" Association="Self.CONTRATOS_CONTRATO_DETALLE">
+            <End Role="CONTRATO_DETALLES" EntitySet="CONTRATO_DETALLES" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATOS_CONTRATO_ESTADO" Association="Self.CONTRATOS_CONTRATO_ESTADO">
+            <End Role="CONTRATO_ESTADOS" EntitySet="CONTRATO_ESTADOS" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="ABOGADO_CONTRATOS" Association="Self.ABOGADO_CONTRATOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_CONTRATOS_CLIENTES" Association="Self.CONTRATO_CONTRATOS_CLIENTES">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_DOCUMENTOS" Association="Self.CONTRATO_DOCUMENTOS">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="DOCUMENTOS" EntitySet="DOCUMENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_FORMA_PAGO" Association="Self.CONTRATO_FORMA_PAGO">
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PAGOS" Association="Self.CONTRATO_PAGOS">
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+            <End Role="PAGOS" EntitySet="PAGOS" />
+          </AssociationSet>
+          <AssociationSet Name="CONTRATO_PLAN_PAGO" Association="Self.CONTRATO_PLAN_PAGO">
+            <End Role="PLAN_PAGO" EntitySet="PLAN_PAGO" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESUPUESTO_CONTRATO" Association="Self.PRESUPUESTO_CONTRATO">
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTE_CONTRATO_CLIENTES" Association="Self.CLIENTE_CONTRATO_CLIENTES">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_CLIENTE_CONTRATO" Association="Self.EMPRESA_CLIENTE_CONTRATO">
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+            <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="DOC_CITA_DOC_ESTADO" Association="Self.DOC_CITA_DOC_ESTADO">
+            <End Role="DOC_ESTADOS" EntitySet="DOC_ESTADOS" />
+            <End Role="DOCUMENTOS_CITAS" EntitySet="DOCUMENTOS_CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="DOC_DOC_CITAS" Association="Self.DOC_DOC_CITAS">
+            <End Role="DOCUMENTOS" EntitySet="DOCUMENTOS" />
+            <End Role="DOCUMENTOS_CITAS" EntitySet="DOCUMENTOS_CITAS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESUPUESTO_PLAN_PAGO" Association="Self.PRESUPUESTO_PLAN_PAGO">
+            <End Role="PLAN_PAGO" EntitySet="PLAN_PAGO" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESU_PRESUPUESTO_DETALLE" Association="Self.PRESU_PRESUPUESTO_DETALLE">
+            <End Role="PRESUPUESTO_DETALLES" EntitySet="PRESUPUESTO_DETALLES" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="PRESU_PRESUPUESTO_ESTADO" Association="Self.PRESU_PRESUPUESTO_ESTADO">
+            <End Role="PRESUPUESTO_ESTADOS" EntitySet="PRESUPUESTO_ESTADOS" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUDES_PRESUPUESTOS" Association="Self.SOLICITUDES_PRESUPUESTOS">
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TECNICO_PRESUPUESTOS" Association="Self.TECNICO_PRESUPUESTOS">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
+          </AssociationSet>
+          <AssociationSet Name="REGION_CIUDAD" Association="Self.REGION_CIUDAD">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+          </AssociationSet>
+          <AssociationSet Name="ROL_USUARIOS" Association="Self.ROL_USUARIOS">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUDES_SOLICITUD_ESTADO" Association="Self.SOLICITUDES_SOLICITUD_ESTADO">
+            <End Role="SOLICITUD_ESTADOS" EntitySet="SOLICITUD_ESTADOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="SOLICITUDES_SOLICITUD_TIPO" Association="Self.SOLICITUDES_SOLICITUD_TIPO">
+            <End Role="SOLICITUD_TIPOS" EntitySet="SOLICITUD_TIPOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="CLIENTES_SOLICITUDES" Association="Self.CLIENTES_SOLICITUDES">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="TECNICO_SOLICITUDES" Association="Self.TECNICO_SOLICITUDES">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
+          </AssociationSet>
+          <AssociationSet Name="EMPRESA_CLIENTES" Association="Self.EMPRESA_CLIENTES">
+            <End Role="EMPRESAS" EntitySet="EMPRESAS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="NOTARIAS_USUARIOS" Association="Self.NOTARIAS_USUARIOS">
+            <End Role="NOTARIAS" EntitySet="NOTARIAS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="LexEntities">
+          <EntitySetMapping Name="ARCHIVOS">
+            <EntityTypeMapping TypeName="Model.ARCHIVOS">
+              <MappingFragment StoreEntitySet="ARCHIVOS">
+                <ScalarProperty Name="CODIGOPDF" ColumnName="CODIGOPDF" />
+                <ScalarProperty Name="NOMBREPDF" ColumnName="NOMBREPDF" />
+                <ScalarProperty Name="ARCHIVOPDF" ColumnName="ARCHIVOPDF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAUSAS">
+            <EntityTypeMapping TypeName="Model.CAUSAS">
+              <MappingFragment StoreEntitySet="CAUSAS">
+                <ScalarProperty Name="ID_CAUSA" ColumnName="ID_CAUSA" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CARATULA" ColumnName="CARATULA" />
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+                <ScalarProperty Name="ID_TRIBUNAL" ColumnName="ID_TRIBUNAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITA_ESTADOS">
+            <EntityTypeMapping TypeName="Model.CITA_ESTADOS">
+              <MappingFragment StoreEntitySet="CITA_ESTADOS">
+                <ScalarProperty Name="ID_ESTADO_CITA" ColumnName="ID_ESTADO_CITA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITAS">
+            <EntityTypeMapping TypeName="Model.CITAS">
+              <MappingFragment StoreEntitySet="CITAS">
+                <ScalarProperty Name="ID_CITA" ColumnName="ID_CITA" />
+                <ScalarProperty Name="FECHA_HORA" ColumnName="FECHA_HORA" />
+                <ScalarProperty Name="ID_NOTARIA" ColumnName="ID_NOTARIA" />
+                <ScalarProperty Name="ID_ESTADO_CITA" ColumnName="ID_ESTADO_CITA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMUNA">
+            <EntityTypeMapping TypeName="Model.COMUNA">
+              <MappingFragment StoreEntitySet="COMUNA">
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATO_DETALLES">
+            <EntityTypeMapping TypeName="Model.CONTRATO_DETALLES">
+              <MappingFragment StoreEntitySet="CONTRATO_DETALLES">
+                <ScalarProperty Name="ID_DETALLE_CONTRATO" ColumnName="ID_DETALLE_CONTRATO" />
+                <ScalarProperty Name="SERVICIO" ColumnName="SERVICIO" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATO_ESTADOS">
+            <EntityTypeMapping TypeName="Model.CONTRATO_ESTADOS">
+              <MappingFragment StoreEntitySet="CONTRATO_ESTADOS">
+                <ScalarProperty Name="ID_CONTRATO_ESTADO" ColumnName="ID_CONTRATO_ESTADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATOS">
+            <EntityTypeMapping TypeName="Model.CONTRATOS">
+              <MappingFragment StoreEntitySet="CONTRATOS">
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+                <ScalarProperty Name="ID_CONTRATO_ESTADO" ColumnName="ID_CONTRATO_ESTADO" />
+                <ScalarProperty Name="ID_DETALLE_CONTRATO" ColumnName="ID_DETALLE_CONTRATO" />
+                <ScalarProperty Name="ID_PRESUPUESTO" ColumnName="ID_PRESUPUESTO" />
+                <ScalarProperty Name="ID_ABOGADO" ColumnName="ID_ABOGADO" />
+                <ScalarProperty Name="ID_PLAN_PAGO" ColumnName="ID_PLAN_PAGO" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+                <ScalarProperty Name="APROBADO_ABOGADO" ColumnName="APROBADO_ABOGADO" />
+                <ScalarProperty Name="APROBADO_CLIENTE" ColumnName="APROBADO_CLIENTE" />
+                <ScalarProperty Name="ID_FORMA_PAGO" ColumnName="ID_FORMA_PAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTRATOS_CLIENTES">
+            <EntityTypeMapping TypeName="Model.CONTRATOS_CLIENTES">
+              <MappingFragment StoreEntitySet="CONTRATOS_CLIENTES">
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DILIGENCIAS">
+            <EntityTypeMapping TypeName="Model.DILIGENCIAS">
+              <MappingFragment StoreEntitySet="DILIGENCIAS">
+                <ScalarProperty Name="ID_DILIGENCIA" ColumnName="ID_DILIGENCIA" />
+                <ScalarProperty Name="FECHA_HORA" ColumnName="FECHA_HORA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_CAUSA" ColumnName="ID_CAUSA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOC_ESTADOS">
+            <EntityTypeMapping TypeName="Model.DOC_ESTADOS">
+              <MappingFragment StoreEntitySet="DOC_ESTADOS">
+                <ScalarProperty Name="ID_ESTADO_DOC" ColumnName="ID_ESTADO_DOC" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTOS">
+            <EntityTypeMapping TypeName="Model.DOCUMENTOS">
+              <MappingFragment StoreEntitySet="DOCUMENTOS">
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCUMENTOS_CITAS">
+            <EntityTypeMapping TypeName="Model.DOCUMENTOS_CITAS">
+              <MappingFragment StoreEntitySet="DOCUMENTOS_CITAS">
+                <ScalarProperty Name="ID_CITA" ColumnName="ID_CITA" />
+                <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+                <ScalarProperty Name="ID_ESTADO_DOC" ColumnName="ID_ESTADO_DOC" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPRESAS">
+            <EntityTypeMapping TypeName="Model.EMPRESAS">
+              <MappingFragment StoreEntitySet="EMPRESAS">
+                <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORMA_PAGO">
+            <EntityTypeMapping TypeName="Model.FORMA_PAGO">
+              <MappingFragment StoreEntitySet="FORMA_PAGO">
+                <ScalarProperty Name="ID_FORMA_PAGO" ColumnName="ID_FORMA_PAGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CANTIDAD_CUOTAS" ColumnName="CANTIDAD_CUOTAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTARIAS">
+            <EntityTypeMapping TypeName="Model.NOTARIAS">
+              <MappingFragment StoreEntitySet="NOTARIAS">
+                <ScalarProperty Name="ID_NOTARIA" ColumnName="ID_NOTARIA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGOS">
+            <EntityTypeMapping TypeName="Model.PAGOS">
+              <MappingFragment StoreEntitySet="PAGOS">
+                <ScalarProperty Name="ID_PAGO" ColumnName="ID_PAGO" />
+                <ScalarProperty Name="FECHA_HORA" ColumnName="FECHA_HORA" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLAN_PAGO">
+            <EntityTypeMapping TypeName="Model.PLAN_PAGO">
+              <MappingFragment StoreEntitySet="PLAN_PAGO">
+                <ScalarProperty Name="ID_PLAN_PAGO" ColumnName="ID_PLAN_PAGO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRESUPUESTO_DETALLES">
+            <EntityTypeMapping TypeName="Model.PRESUPUESTO_DETALLES">
+              <MappingFragment StoreEntitySet="PRESUPUESTO_DETALLES">
+                <ScalarProperty Name="ID_DETALLE_PRESUPUESTO" ColumnName="ID_DETALLE_PRESUPUESTO" />
+                <ScalarProperty Name="SERVICIO" ColumnName="SERVICIO" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRESUPUESTO_ESTADOS">
+            <EntityTypeMapping TypeName="Model.PRESUPUESTO_ESTADOS">
+              <MappingFragment StoreEntitySet="PRESUPUESTO_ESTADOS">
+                <ScalarProperty Name="ID_ESTADO_PRESUPUESTO" ColumnName="ID_ESTADO_PRESUPUESTO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRESUPUESTOS">
+            <EntityTypeMapping TypeName="Model.PRESUPUESTOS">
+              <MappingFragment StoreEntitySet="PRESUPUESTOS">
+                <ScalarProperty Name="ID_PRESUPUESTO" ColumnName="ID_PRESUPUESTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ID_ESTADO_PRESUPUESTO" ColumnName="ID_ESTADO_PRESUPUESTO" />
+                <ScalarProperty Name="ID_DETALLE_PRESUPUESTO" ColumnName="ID_DETALLE_PRESUPUESTO" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+                <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
+                <ScalarProperty Name="ID_TECNICO" ColumnName="ID_TECNICO" />
+                <ScalarProperty Name="ID_PLAN_PAGO" ColumnName="ID_PLAN_PAGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVINCIA">
+            <EntityTypeMapping TypeName="Model.PROVINCIA">
+              <MappingFragment StoreEntitySet="PROVINCIA">
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGION">
+            <EntityTypeMapping TypeName="Model.REGION">
+              <MappingFragment StoreEntitySet="REGION">
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="Model.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_ESTADOS">
+            <EntityTypeMapping TypeName="Model.SOLICITUD_ESTADOS">
+              <MappingFragment StoreEntitySet="SOLICITUD_ESTADOS">
+                <ScalarProperty Name="ID_ESTADO_SOLICITUD" ColumnName="ID_ESTADO_SOLICITUD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_TIPOS">
+            <EntityTypeMapping TypeName="Model.SOLICITUD_TIPOS">
+              <MappingFragment StoreEntitySet="SOLICITUD_TIPOS">
+                <ScalarProperty Name="ID_TIPO_SOLICITUD" ColumnName="ID_TIPO_SOLICITUD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUDES">
+            <EntityTypeMapping TypeName="Model.SOLICITUDES">
+              <MappingFragment StoreEntitySet="SOLICITUDES">
+                <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
+                <ScalarProperty Name="FECHA_HORA" ColumnName="FECHA_HORA" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_TIPO_SOLICITUD" ColumnName="ID_TIPO_SOLICITUD" />
+                <ScalarProperty Name="ID_ESTADO_SOLICITUD" ColumnName="ID_ESTADO_SOLICITUD" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_TECNICO" ColumnName="ID_TECNICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRIBUNAL">
+            <EntityTypeMapping TypeName="Model.TRIBUNAL">
+              <MappingFragment StoreEntitySet="TRIBUNAL">
+                <ScalarProperty Name="ID_TRIBUNAL" ColumnName="ID_TRIBUNAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="Model.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="PATERNO" ColumnName="PATERNO" />
+                <ScalarProperty Name="MATERNO" ColumnName="MATERNO" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="F_NAC" ColumnName="F_NAC" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="CELULAR" ColumnName="CELULAR" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="CREADO" ColumnName="CREADO" />
+                <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EMPRESA_CLIENTES" TypeName="Model.EMPRESA_CLIENTES" StoreEntitySet="EMPRESA_CLIENTES">
+            <EndProperty Name="EMPRESAS">
+              <ScalarProperty Name="ID_EMPRESA" ColumnName="ID_EMPRESA" />
+            </EndProperty>
+            <EndProperty Name="USUARIOS">
+              <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="NOTARIAS_USUARIOS" TypeName="Model.NOTARIAS_USUARIOS" StoreEntitySet="NOTARIAS_USUARIOS">
+            <EndProperty Name="NOTARIAS">
+              <ScalarProperty Name="ID_NOTARIA" ColumnName="ID_NOTARIA" />
+            </EndProperty>
+            <EndProperty Name="USUARIOS">
+              <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
