@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ARCHIVOS">
           <Key>
             <PropertyRef Name="CODIGOPDF" />
@@ -20,8 +20,7 @@
           <Property Name="ID_CAUSA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ROL" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="FECHA" Type="date" Nullable="false" />
-          <Property Name="CARATULA" Type="date" Nullable="false" />
-          <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CARATULA" Type="varchar2" MaxLength="255" />
           <Property Name="ID_TRIBUNAL" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CITA_ESTADOS">
@@ -55,6 +54,7 @@
           <Property Name="ID_DETALLE_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SERVICIO" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="MONTO" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="ID_CONTRATO" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="CONTRATO_ESTADOS">
           <Key>
@@ -71,7 +71,6 @@
           <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
           <Property Name="FECHA_TERMINO" Type="date" Nullable="false" />
           <Property Name="ID_CONTRATO_ESTADO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_DETALLE_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_PRESUPUESTO" Type="number" Precision="38" Scale="0" />
           <Property Name="ID_ABOGADO" Type="number" Precision="38" Scale="0" />
           <Property Name="ID_PLAN_PAGO" Type="number" Precision="38" Scale="0" />
@@ -80,6 +79,7 @@
           <Property Name="APROBADO_ABOGADO" Type="number" Precision="1" Scale="0" Nullable="false" />
           <Property Name="APROBADO_CLIENTE" Type="number" Precision="1" Scale="0" Nullable="false" />
           <Property Name="ID_FORMA_PAGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_CAUSA" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="CONTRATOS_CLIENTES">
           <Key>
@@ -114,9 +114,9 @@
             <PropertyRef Name="ID_DOCUMENTO" />
           </Key>
           <Property Name="ID_DOCUMENTO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="URL" Type="varchar2" MaxLength="2048" Nullable="false" />
           <Property Name="CREADO" Type="date" Nullable="false" />
           <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="URL" Type="clob" />
         </EntityType>
         <EntityType Name="DOCUMENTOS_CITAS">
           <Key>
@@ -188,6 +188,14 @@
           <Property Name="MODIFICADO" Type="date" />
           <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" />
         </EntityType>
+        <EntityType Name="PHOTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="50" />
+          <Property Name="PHOTO" Type="blob" />
+        </EntityType>
         <EntityType Name="PLAN_PAGO">
           <Key>
             <PropertyRef Name="ID_PLAN_PAGO" />
@@ -202,6 +210,7 @@
           <Property Name="ID_DETALLE_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SERVICIO" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="MONTO" Type="number" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="ID_PRESUPUESTO" Type="number" Precision="11" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PRESUPUESTO_ESTADOS">
           <Key>
@@ -217,7 +226,6 @@
           <Property Name="ID_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="date" />
           <Property Name="ID_ESTADO_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_DETALLE_PRESUPUESTO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CREADO" Type="date" Nullable="false" />
           <Property Name="MODIFICADO" Type="date" />
           <Property Name="ID_SOLICITUD" Type="number" Precision="38" Scale="0" />
@@ -411,18 +419,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CONTRATO_CAUSAS">
-          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
-          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTRATOS">
-              <PropertyRef Name="ID_CONTRATO" />
-            </Principal>
-            <Dependent Role="CAUSAS">
-              <PropertyRef Name="ID_CONTRATO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="CONTRATO_CONTRATOS_CLIENTES">
           <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
           <End Role="CONTRATOS_CLIENTES" Type="Self.CONTRATOS_CLIENTES" Multiplicity="*" />
@@ -480,18 +476,6 @@
             </Principal>
             <Dependent Role="CONTRATOS">
               <PropertyRef Name="ID_PLAN_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CONTRATOS_CONTRATO_DETALLE">
-          <End Role="CONTRATO_DETALLES" Type="Self.CONTRATO_DETALLES" Multiplicity="1" />
-          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTRATO_DETALLES">
-              <PropertyRef Name="ID_DETALLE_CONTRATO" />
-            </Principal>
-            <Dependent Role="CONTRATOS">
-              <PropertyRef Name="ID_DETALLE_CONTRATO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -588,18 +572,6 @@
             </Principal>
             <Dependent Role="NOTARIAS">
               <PropertyRef Name="ID_COMUNA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PRESU_PRESUPUESTO_DETALLE">
-          <End Role="PRESUPUESTO_DETALLES" Type="Self.PRESUPUESTO_DETALLES" Multiplicity="1" />
-          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRESUPUESTO_DETALLES">
-              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
-            </Principal>
-            <Dependent Role="PRESUPUESTOS">
-              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -779,6 +751,7 @@
           <EntitySet Name="NOTARIAS" EntityType="Self.NOTARIAS" Schema="LEX" store:Type="Tables" />
           <EntitySet Name="NOTARIAS_USUARIOS" EntityType="Self.NOTARIAS_USUARIOS" Schema="LEX" store:Type="Tables" />
           <EntitySet Name="PAGOS" EntityType="Self.PAGOS" Schema="LEX" store:Type="Tables" />
+          <EntitySet Name="PHOTOS" EntityType="Self.PHOTOS" Schema="LEX" store:Type="Tables" />
           <EntitySet Name="PLAN_PAGO" EntityType="Self.PLAN_PAGO" Schema="LEX" store:Type="Tables" />
           <EntitySet Name="PRESUPUESTO_DETALLES" EntityType="Self.PRESUPUESTO_DETALLES" Schema="LEX" store:Type="Tables" />
           <EntitySet Name="PRESUPUESTO_ESTADOS" EntityType="Self.PRESUPUESTO_ESTADOS" Schema="LEX" store:Type="Tables" />
@@ -827,10 +800,6 @@
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="SOLICITUDES" EntitySet="SOLICITUDES" />
           </AssociationSet>
-          <AssociationSet Name="CONTRATO_CAUSAS" Association="Self.CONTRATO_CAUSAS">
-            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
-            <End Role="CAUSAS" EntitySet="CAUSAS" />
-          </AssociationSet>
           <AssociationSet Name="CONTRATO_CONTRATOS_CLIENTES" Association="Self.CONTRATO_CONTRATOS_CLIENTES">
             <End Role="CONTRATOS" EntitySet="CONTRATOS" />
             <End Role="CONTRATOS_CLIENTES" EntitySet="CONTRATOS_CLIENTES" />
@@ -849,10 +818,6 @@
           </AssociationSet>
           <AssociationSet Name="CONTRATO_PLAN_PAGO" Association="Self.CONTRATO_PLAN_PAGO">
             <End Role="PLAN_PAGO" EntitySet="PLAN_PAGO" />
-            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
-          </AssociationSet>
-          <AssociationSet Name="CONTRATOS_CONTRATO_DETALLE" Association="Self.CONTRATOS_CONTRATO_DETALLE">
-            <End Role="CONTRATO_DETALLES" EntitySet="CONTRATO_DETALLES" />
             <End Role="CONTRATOS" EntitySet="CONTRATOS" />
           </AssociationSet>
           <AssociationSet Name="CONTRATOS_CONTRATO_ESTADO" Association="Self.CONTRATOS_CONTRATO_ESTADO">
@@ -886,10 +851,6 @@
           <AssociationSet Name="NOTARIA_COMUNA" Association="Self.NOTARIA_COMUNA">
             <End Role="COMUNA" EntitySet="COMUNA" />
             <End Role="NOTARIAS" EntitySet="NOTARIAS" />
-          </AssociationSet>
-          <AssociationSet Name="PRESU_PRESUPUESTO_DETALLE" Association="Self.PRESU_PRESUPUESTO_DETALLE">
-            <End Role="PRESUPUESTO_DETALLES" EntitySet="PRESUPUESTO_DETALLES" />
-            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
           </AssociationSet>
           <AssociationSet Name="PRESU_PRESUPUESTO_ESTADO" Association="Self.PRESU_PRESUPUESTO_ESTADO">
             <End Role="PRESUPUESTO_ESTADOS" EntitySet="PRESUPUESTO_ESTADOS" />
@@ -964,12 +925,10 @@
           <Property Name="ID_CAUSA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ROL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" Nullable="false" />
-          <Property Name="CARATULA" Type="DateTime" Nullable="false" />
-          <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CARATULA" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ID_TRIBUNAL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="TRIBUNAL" Relationship="Self.CAUSA_TRIBUNAL" FromRole="CAUSAS" ToRole="TRIBUNAL" />
           <NavigationProperty Name="DILIGENCIAS" Relationship="Self.CAUSAS_DILIGENCIAS" FromRole="CAUSAS" ToRole="DILIGENCIAS" />
-          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_CAUSAS" FromRole="CAUSAS" ToRole="CONTRATOS" />
         </EntityType>
         <EntityType Name="CITA_ESTADOS">
           <Key>
@@ -1010,7 +969,7 @@
           <Property Name="ID_DETALLE_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SERVICIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MONTO" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATOS_CONTRATO_DETALLE" FromRole="CONTRATO_DETALLES" ToRole="CONTRATOS" />
+          <Property Name="ID_CONTRATO" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="CONTRATO_ESTADOS">
           <Key>
@@ -1028,7 +987,6 @@
           <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
           <Property Name="FECHA_TERMINO" Type="DateTime" Nullable="false" />
           <Property Name="ID_CONTRATO_ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_DETALLE_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="ID_ABOGADO" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="ID_PLAN_PAGO" Type="Decimal" Precision="38" Scale="0" />
@@ -1037,8 +995,7 @@
           <Property Name="APROBADO_ABOGADO" Type="Int16" Nullable="false" />
           <Property Name="APROBADO_CLIENTE" Type="Int16" Nullable="false" />
           <Property Name="ID_FORMA_PAGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="CAUSAS" Relationship="Self.CONTRATO_CAUSAS" FromRole="CONTRATOS" ToRole="CAUSAS" />
-          <NavigationProperty Name="CONTRATO_DETALLES" Relationship="Self.CONTRATOS_CONTRATO_DETALLE" FromRole="CONTRATOS" ToRole="CONTRATO_DETALLES" />
+          <Property Name="ID_CAUSA" Type="Decimal" Precision="38" Scale="0" />
           <NavigationProperty Name="CONTRATO_ESTADOS" Relationship="Self.CONTRATOS_CONTRATO_ESTADO" FromRole="CONTRATOS" ToRole="CONTRATO_ESTADOS" />
           <NavigationProperty Name="USUARIOS" Relationship="Self.ABOGADO_CONTRATOS" FromRole="CONTRATOS" ToRole="USUARIOS" />
           <NavigationProperty Name="CONTRATOS_CLIENTES" Relationship="Self.CONTRATO_CONTRATOS_CLIENTES" FromRole="CONTRATOS" ToRole="CONTRATOS_CLIENTES" />
@@ -1086,9 +1043,9 @@
             <PropertyRef Name="ID_DOCUMENTO" />
           </Key>
           <Property Name="ID_DOCUMENTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="URL" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CREADO" Type="DateTime" Nullable="false" />
           <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_DOCUMENTOS" FromRole="DOCUMENTOS" ToRole="CONTRATOS" />
           <NavigationProperty Name="DOCUMENTOS_CITAS" Relationship="Self.DOC_DOC_CITAS" FromRole="DOCUMENTOS" ToRole="DOCUMENTOS_CITAS" />
         </EntityType>
@@ -1157,6 +1114,14 @@
           <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" />
           <NavigationProperty Name="CONTRATOS" Relationship="Self.CONTRATO_PAGOS" FromRole="PAGOS" ToRole="CONTRATOS" />
         </EntityType>
+        <EntityType Name="PHOTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHOTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="PLAN_PAGO">
           <Key>
             <PropertyRef Name="ID_PLAN_PAGO" />
@@ -1173,7 +1138,7 @@
           <Property Name="ID_DETALLE_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="SERVICIO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MONTO" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="PRESUPUESTOS" Relationship="Self.PRESU_PRESUPUESTO_DETALLE" FromRole="PRESUPUESTO_DETALLES" ToRole="PRESUPUESTOS" />
+          <Property Name="ID_PRESUPUESTO" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="PRESUPUESTO_ESTADOS">
           <Key>
@@ -1190,7 +1155,6 @@
           <Property Name="ID_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA" Type="DateTime" />
           <Property Name="ID_ESTADO_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_DETALLE_PRESUPUESTO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CREADO" Type="DateTime" Nullable="false" />
           <Property Name="MODIFICADO" Type="DateTime" />
           <Property Name="ID_SOLICITUD" Type="Decimal" Precision="38" Scale="0" />
@@ -1198,7 +1162,6 @@
           <Property Name="ID_PLAN_PAGO" Type="Decimal" Precision="38" Scale="0" />
           <NavigationProperty Name="CONTRATOS" Relationship="Self.PRESUPUESTO_CONTRATO" FromRole="PRESUPUESTOS" ToRole="CONTRATOS" />
           <NavigationProperty Name="PLAN_PAGO" Relationship="Self.PRESUPUESTO_PLAN_PAGO" FromRole="PRESUPUESTOS" ToRole="PLAN_PAGO" />
-          <NavigationProperty Name="PRESUPUESTO_DETALLES" Relationship="Self.PRESU_PRESUPUESTO_DETALLE" FromRole="PRESUPUESTOS" ToRole="PRESUPUESTO_DETALLES" />
           <NavigationProperty Name="PRESUPUESTO_ESTADOS" Relationship="Self.PRESU_PRESUPUESTO_ESTADO" FromRole="PRESUPUESTOS" ToRole="PRESUPUESTO_ESTADOS" />
           <NavigationProperty Name="SOLICITUDES" Relationship="Self.SOLICITUDES_PRESUPUESTOS" FromRole="PRESUPUESTOS" ToRole="SOLICITUDES" />
           <NavigationProperty Name="USUARIOS" Relationship="Self.TECNICO_PRESUPUESTOS" FromRole="PRESUPUESTOS" ToRole="USUARIOS" />
@@ -1327,18 +1290,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CONTRATO_CAUSAS">
-          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="1" />
-          <End Role="CAUSAS" Type="Self.CAUSAS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTRATOS">
-              <PropertyRef Name="ID_CONTRATO" />
-            </Principal>
-            <Dependent Role="CAUSAS">
-              <PropertyRef Name="ID_CONTRATO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="CITA_ESTADO_CITA">
           <End Role="CITA_ESTADOS" Type="Self.CITA_ESTADOS" Multiplicity="1" />
           <End Role="CITAS" Type="Self.CITAS" Multiplicity="*" />
@@ -1420,18 +1371,6 @@
             </Principal>
             <Dependent Role="TRIBUNAL">
               <PropertyRef Name="ID_COMUNA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CONTRATOS_CONTRATO_DETALLE">
-          <End Role="CONTRATO_DETALLES" Type="Self.CONTRATO_DETALLES" Multiplicity="1" />
-          <End Role="CONTRATOS" Type="Self.CONTRATOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CONTRATO_DETALLES">
-              <PropertyRef Name="ID_DETALLE_CONTRATO" />
-            </Principal>
-            <Dependent Role="CONTRATOS">
-              <PropertyRef Name="ID_DETALLE_CONTRATO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1591,18 +1530,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PRESU_PRESUPUESTO_DETALLE">
-          <End Role="PRESUPUESTO_DETALLES" Type="Self.PRESUPUESTO_DETALLES" Multiplicity="1" />
-          <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRESUPUESTO_DETALLES">
-              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
-            </Principal>
-            <Dependent Role="PRESUPUESTOS">
-              <PropertyRef Name="ID_DETALLE_PRESUPUESTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="PRESU_PRESUPUESTO_ESTADO">
           <End Role="PRESUPUESTO_ESTADOS" Type="Self.PRESUPUESTO_ESTADOS" Multiplicity="1" />
           <End Role="PRESUPUESTOS" Type="Self.PRESUPUESTOS" Multiplicity="*" />
@@ -1737,6 +1664,7 @@
           <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" />
           <EntitySet Name="NOTARIAS" EntityType="Self.NOTARIAS" />
           <EntitySet Name="PAGOS" EntityType="Self.PAGOS" />
+          <EntitySet Name="PHOTOS" EntityType="Self.PHOTOS" />
           <EntitySet Name="PLAN_PAGO" EntityType="Self.PLAN_PAGO" />
           <EntitySet Name="PRESUPUESTO_DETALLES" EntityType="Self.PRESUPUESTO_DETALLES" />
           <EntitySet Name="PRESUPUESTO_ESTADOS" EntityType="Self.PRESUPUESTO_ESTADOS" />
@@ -1756,10 +1684,6 @@
           <AssociationSet Name="CAUSAS_DILIGENCIAS" Association="Self.CAUSAS_DILIGENCIAS">
             <End Role="CAUSAS" EntitySet="CAUSAS" />
             <End Role="DILIGENCIAS" EntitySet="DILIGENCIAS" />
-          </AssociationSet>
-          <AssociationSet Name="CONTRATO_CAUSAS" Association="Self.CONTRATO_CAUSAS">
-            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
-            <End Role="CAUSAS" EntitySet="CAUSAS" />
           </AssociationSet>
           <AssociationSet Name="CITA_ESTADO_CITA" Association="Self.CITA_ESTADO_CITA">
             <End Role="CITA_ESTADOS" EntitySet="CITA_ESTADOS" />
@@ -1788,10 +1712,6 @@
           <AssociationSet Name="TRIBUNAL_COMUNA" Association="Self.TRIBUNAL_COMUNA">
             <End Role="COMUNA" EntitySet="COMUNA" />
             <End Role="TRIBUNAL" EntitySet="TRIBUNAL" />
-          </AssociationSet>
-          <AssociationSet Name="CONTRATOS_CONTRATO_DETALLE" Association="Self.CONTRATOS_CONTRATO_DETALLE">
-            <End Role="CONTRATO_DETALLES" EntitySet="CONTRATO_DETALLES" />
-            <End Role="CONTRATOS" EntitySet="CONTRATOS" />
           </AssociationSet>
           <AssociationSet Name="CONTRATOS_CONTRATO_ESTADO" Association="Self.CONTRATOS_CONTRATO_ESTADO">
             <End Role="CONTRATO_ESTADOS" EntitySet="CONTRATO_ESTADOS" />
@@ -1843,10 +1763,6 @@
           </AssociationSet>
           <AssociationSet Name="PRESUPUESTO_PLAN_PAGO" Association="Self.PRESUPUESTO_PLAN_PAGO">
             <End Role="PLAN_PAGO" EntitySet="PLAN_PAGO" />
-            <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
-          </AssociationSet>
-          <AssociationSet Name="PRESU_PRESUPUESTO_DETALLE" Association="Self.PRESU_PRESUPUESTO_DETALLE">
-            <End Role="PRESUPUESTO_DETALLES" EntitySet="PRESUPUESTO_DETALLES" />
             <End Role="PRESUPUESTOS" EntitySet="PRESUPUESTOS" />
           </AssociationSet>
           <AssociationSet Name="PRESU_PRESUPUESTO_ESTADO" Association="Self.PRESU_PRESUPUESTO_ESTADO">
@@ -1916,7 +1832,6 @@
                 <ScalarProperty Name="ROL" ColumnName="ROL" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="CARATULA" ColumnName="CARATULA" />
-                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
                 <ScalarProperty Name="ID_TRIBUNAL" ColumnName="ID_TRIBUNAL" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1954,6 +1869,7 @@
                 <ScalarProperty Name="ID_DETALLE_CONTRATO" ColumnName="ID_DETALLE_CONTRATO" />
                 <ScalarProperty Name="SERVICIO" ColumnName="SERVICIO" />
                 <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1972,7 +1888,6 @@
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
                 <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
                 <ScalarProperty Name="ID_CONTRATO_ESTADO" ColumnName="ID_CONTRATO_ESTADO" />
-                <ScalarProperty Name="ID_DETALLE_CONTRATO" ColumnName="ID_DETALLE_CONTRATO" />
                 <ScalarProperty Name="ID_PRESUPUESTO" ColumnName="ID_PRESUPUESTO" />
                 <ScalarProperty Name="ID_ABOGADO" ColumnName="ID_ABOGADO" />
                 <ScalarProperty Name="ID_PLAN_PAGO" ColumnName="ID_PLAN_PAGO" />
@@ -1981,6 +1896,7 @@
                 <ScalarProperty Name="APROBADO_ABOGADO" ColumnName="APROBADO_ABOGADO" />
                 <ScalarProperty Name="APROBADO_CLIENTE" ColumnName="APROBADO_CLIENTE" />
                 <ScalarProperty Name="ID_FORMA_PAGO" ColumnName="ID_FORMA_PAGO" />
+                <ScalarProperty Name="ID_CAUSA" ColumnName="ID_CAUSA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2017,9 +1933,9 @@
             <EntityTypeMapping TypeName="Model.DOCUMENTOS">
               <MappingFragment StoreEntitySet="DOCUMENTOS">
                 <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
                 <ScalarProperty Name="CREADO" ColumnName="CREADO" />
                 <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2082,6 +1998,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PHOTOS">
+            <EntityTypeMapping TypeName="Model.PHOTOS">
+              <MappingFragment StoreEntitySet="PHOTOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PLAN_PAGO">
             <EntityTypeMapping TypeName="Model.PLAN_PAGO">
               <MappingFragment StoreEntitySet="PLAN_PAGO">
@@ -2096,6 +2021,7 @@
                 <ScalarProperty Name="ID_DETALLE_PRESUPUESTO" ColumnName="ID_DETALLE_PRESUPUESTO" />
                 <ScalarProperty Name="SERVICIO" ColumnName="SERVICIO" />
                 <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="ID_PRESUPUESTO" ColumnName="ID_PRESUPUESTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2113,7 +2039,6 @@
                 <ScalarProperty Name="ID_PRESUPUESTO" ColumnName="ID_PRESUPUESTO" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="ID_ESTADO_PRESUPUESTO" ColumnName="ID_ESTADO_PRESUPUESTO" />
-                <ScalarProperty Name="ID_DETALLE_PRESUPUESTO" ColumnName="ID_DETALLE_PRESUPUESTO" />
                 <ScalarProperty Name="CREADO" ColumnName="CREADO" />
                 <ScalarProperty Name="MODIFICADO" ColumnName="MODIFICADO" />
                 <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />

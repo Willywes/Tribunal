@@ -12,11 +12,10 @@ namespace tribunal.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class CONTRATO_DETALLES
+    public partial class PHOTOS
     {
-        public decimal ID_DETALLE_CONTRATO { get; set; }
-        public string SERVICIO { get; set; }
-        public long MONTO { get; set; }
-        public long ID_CONTRATO { get; set; }
+        public short ID { get; set; }
+        public string TITLE { get; set; }
+        public byte[] PHOTO { get; set; }
     }
 }

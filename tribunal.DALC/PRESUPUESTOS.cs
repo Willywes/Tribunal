@@ -22,7 +22,6 @@ namespace tribunal.DALC
         public decimal ID_PRESUPUESTO { get; set; }
         public Nullable<System.DateTime> FECHA { get; set; }
         public decimal ID_ESTADO_PRESUPUESTO { get; set; }
-        public decimal ID_DETALLE_PRESUPUESTO { get; set; }
         public System.DateTime CREADO { get; set; }
         public Nullable<System.DateTime> MODIFICADO { get; set; }
         public Nullable<decimal> ID_SOLICITUD { get; set; }
@@ -31,7 +30,6 @@ namespace tribunal.DALC
     
         public virtual ICollection<CONTRATOS> CONTRATOS { get; set; }
         public virtual PLAN_PAGO PLAN_PAGO { get; set; }
-        public virtual PRESUPUESTO_DETALLES PRESUPUESTO_DETALLES { get; set; }
         public virtual PRESUPUESTO_ESTADOS PRESUPUESTO_ESTADOS { get; set; }
         public virtual SOLICITUDES SOLICITUDES { get; set; }
         public virtual USUARIOS USUARIOS { get; set; }

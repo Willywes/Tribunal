@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Causas.cs" />
     <Compile Include="CommonBC.cs" />
     <Compile Include="Comuna.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tribunal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -56,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\tribunal.DALC\tribunal.DALC.csproj">
-      <Project>{f54e7a39-87b4-4d77-af71-3454d3b1479c}</Project>
+      <Project>{bd4dcc43-ead3-4595-9951-d114ec25a8df}</Project>
       <Name>tribunal.DALC</Name>
     </ProjectReference>
   </ItemGroup>

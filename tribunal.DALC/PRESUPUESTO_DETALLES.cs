@@ -14,15 +14,9 @@ namespace tribunal.DALC
     
     public partial class PRESUPUESTO_DETALLES
     {
-        public PRESUPUESTO_DETALLES()
-        {
-            this.PRESUPUESTOS = new HashSet<PRESUPUESTOS>();
-        }
-    
         public decimal ID_DETALLE_PRESUPUESTO { get; set; }
         public string SERVICIO { get; set; }
         public long MONTO { get; set; }
-    
-        public virtual ICollection<PRESUPUESTOS> PRESUPUESTOS { get; set; }
+        public long ID_PRESUPUESTO { get; set; }
     }
 }

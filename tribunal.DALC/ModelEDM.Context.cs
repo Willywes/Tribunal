@@ -42,6 +42,7 @@ namespace tribunal.DALC
         public DbSet<FORMA_PAGO> FORMA_PAGO { get; set; }
         public DbSet<NOTARIAS> NOTARIAS { get; set; }
         public DbSet<PAGOS> PAGOS { get; set; }
+        public DbSet<PHOTOS> PHOTOS { get; set; }
         public DbSet<PLAN_PAGO> PLAN_PAGO { get; set; }
         public DbSet<PRESUPUESTO_DETALLES> PRESUPUESTO_DETALLES { get; set; }
         public DbSet<PRESUPUESTO_ESTADOS> PRESUPUESTO_ESTADOS { get; set; }

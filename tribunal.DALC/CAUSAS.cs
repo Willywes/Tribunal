@@ -22,12 +22,10 @@ namespace tribunal.DALC
         public decimal ID_CAUSA { get; set; }
         public string ROL { get; set; }
         public System.DateTime FECHA { get; set; }
-        public System.DateTime CARATULA { get; set; }
-        public decimal ID_CONTRATO { get; set; }
+        public string CARATULA { get; set; }
         public decimal ID_TRIBUNAL { get; set; }
     
         public virtual TRIBUNAL TRIBUNAL { get; set; }
         public virtual ICollection<DILIGENCIAS> DILIGENCIAS { get; set; }
-        public virtual CONTRATOS CONTRATOS { get; set; }
     }
 }

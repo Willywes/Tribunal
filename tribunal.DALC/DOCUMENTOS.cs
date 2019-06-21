@@ -20,9 +20,9 @@ namespace tribunal.DALC
         }
     
         public decimal ID_DOCUMENTO { get; set; }
-        public string URL { get; set; }
         public System.DateTime CREADO { get; set; }
         public decimal ID_CONTRATO { get; set; }
+        public string URL { get; set; }
     
         public virtual CONTRATOS CONTRATOS { get; set; }
         public virtual ICollection<DOCUMENTOS_CITAS> DOCUMENTOS_CITAS { get; set; }

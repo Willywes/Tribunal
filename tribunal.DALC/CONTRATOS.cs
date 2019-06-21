@@ -16,7 +16,6 @@ namespace tribunal.DALC
     {
         public CONTRATOS()
         {
-            this.CAUSAS = new HashSet<CAUSAS>();
             this.CONTRATOS_CLIENTES = new HashSet<CONTRATOS_CLIENTES>();
             this.DOCUMENTOS = new HashSet<DOCUMENTOS>();
             this.PAGOS = new HashSet<PAGOS>();
@@ -26,7 +25,6 @@ namespace tribunal.DALC
         public System.DateTime FECHA_INICIO { get; set; }
         public System.DateTime FECHA_TERMINO { get; set; }
         public decimal ID_CONTRATO_ESTADO { get; set; }
-        public decimal ID_DETALLE_CONTRATO { get; set; }
         public Nullable<decimal> ID_PRESUPUESTO { get; set; }
         public Nullable<decimal> ID_ABOGADO { get; set; }
         public Nullable<decimal> ID_PLAN_PAGO { get; set; }
@@ -35,9 +33,8 @@ namespace tribunal.DALC
         public short APROBADO_ABOGADO { get; set; }
         public short APROBADO_CLIENTE { get; set; }
         public decimal ID_FORMA_PAGO { get; set; }
+        public Nullable<decimal> ID_CAUSA { get; set; }
     
-        public virtual ICollection<CAUSAS> CAUSAS { get; set; }
-        public virtual CONTRATO_DETALLES CONTRATO_DETALLES { get; set; }
         public virtual CONTRATO_ESTADOS CONTRATO_ESTADOS { get; set; }
         public virtual USUARIOS USUARIOS { get; set; }
         public virtual ICollection<CONTRATOS_CLIENTES> CONTRATOS_CLIENTES { get; set; }

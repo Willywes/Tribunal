@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F54E7A39-87B4-4D77-AF71-3454D3B1479C}</ProjectGuid>
+    <ProjectGuid>{BD4DCC43-EAD3-4595-9951-D114EC25A8DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tribunal.DALC</RootNamespace>
@@ -34,7 +34,6 @@
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.IntegrationServices.ODataConnectionManager, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,6 +41,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
@@ -49,132 +49,135 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ARCHIVOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CAUSAS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CITAS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CITA_ESTADOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="COMUNA.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CONTRATOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CONTRATOS_CLIENTES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CONTRATO_DETALLES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="CONTRATO_ESTADOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="DILIGENCIAS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="DOCUMENTOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="DOCUMENTOS_CITAS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="DOC_ESTADOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPRESAS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="FORMA_PAGO.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.Context.cs">
+    <Compile Include="ModelEDM.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
+      <DependentUpon>ModelEDM.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs">
+    <Compile Include="ModelEDM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.Designer.cs">
+    <Compile Include="ModelEDM.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>ModelEDM.edmx</DependentUpon>
     </Compile>
     <Compile Include="NOTARIAS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="PAGOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PHOTOS.cs">
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="PLAN_PAGO.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="PRESUPUESTOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="PRESUPUESTO_DETALLES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="PRESUPUESTO_ESTADOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PROVINCIA.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="REGION.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="ROLES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SOLICITUDES.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SOLICITUD_ESTADOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="SOLICITUD_TIPOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="TRIBUNAL.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="USUARIOS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelEDM.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model.edmx">
+    <EntityDeploy Include="ModelEDM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelEDM.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <None Include="ModelEDM.edmx.diagram">
+      <DependentUpon>ModelEDM.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model.Context.tt">
+    <Content Include="ModelEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>ModelEDM.Context.cs</LastGenOutput>
+      <DependentUpon>ModelEDM.edmx</DependentUpon>
     </Content>
-    <Content Include="Model.tt">
+    <Content Include="ModelEDM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>ModelEDM.edmx</DependentUpon>
+      <LastGenOutput>ModelEDM.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

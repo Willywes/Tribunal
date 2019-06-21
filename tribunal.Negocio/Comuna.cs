@@ -14,6 +14,10 @@ namespace tribunal.Negocio
         public string Nombre { get; set; }
         public decimal ProvinciaId { get; set; }
 
+        public Comuna()
+        {
+        }
+
         public Comuna(decimal id, string nombre, decimal provinciaId)
         {
             Id = id;
