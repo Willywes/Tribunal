@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +30,11 @@ namespace WPF
         }
 
         private void runData() {
+            //dataGrid.Items.Clear();
+      
+            List<Causas> causas = new Causas().All();
 
-            dataGrid.ItemsSource = new Causas().All();
+            dataGrid.ItemsSource = causas;
         }
 
         private void BtnBuscar_Click(object sender, RoutedEventArgs e)
@@ -44,9 +48,6 @@ namespace WPF
             
             }
 
-            //Tribunal t = new Tribunal();
-            //var comunas = t.GetComunas();
-
             dataGrid.ItemsSource = new Causas().Get(rol, fecha);
 
 
@@ -59,5 +60,26 @@ namespace WPF
 
             runData();
         }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Causas data = (Causas)((Button)e.Source).DataContext;
+                //int id = data.Id;
+                
+
+                Detalle detalle = new Detalle(data);
+                detalle.Show();
+        
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        
     }
 }

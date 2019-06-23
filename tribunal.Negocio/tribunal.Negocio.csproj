@@ -49,6 +49,7 @@
     <Compile Include="Causas.cs" />
     <Compile Include="CommonBC.cs" />
     <Compile Include="Comuna.cs" />
+    <Compile Include="Diligencias.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tribunal.cs" />
   </ItemGroup>

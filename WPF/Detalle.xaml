@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPF.Detalle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        Title="Poder Judicial - Gestión de Causas" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Image x:Name="image" Height="64" VerticalAlignment="Top" Source="images/pj.png" HorizontalAlignment="Left" Width="128" Margin="10,10,0,0"/>
+        <Label x:Name="label" Content="Causas Tribunal de Justicia" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" FontSize="22"/>
+        <Label x:Name="label1" Content="República de Chile" HorizontalAlignment="Left" Margin="153,49,0,0" VerticalAlignment="Top"/>
+        <Separator Margin="0,80,0,0" Height="17" VerticalAlignment="Top"/>
+        <Separator Margin="0,158,0,0" Height="17" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
+        <Grid>
+            <DataGrid x:Name="dataGrid" Margin="10,179,10,10" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding Path='Fecha'}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Descripcion" Width="500" Binding="{Binding Path='Descripcion'}" IsReadOnly="True"/>
+
+
+                    <!--<DataGridTemplateColumn Header="View">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnView" Content="Ver Detalle" Click="btnView_Click"></Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+
+
+            </DataGrid>
+            <Label Content="ROL" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblRol" Content="" HorizontalAlignment="Left" Margin="47,101,0,0" VerticalAlignment="Top" Width="58"/>
+            <Label Content="FECHA" HorizontalAlignment="Left" Margin="125,101,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblFecha" Content="" HorizontalAlignment="Left" Margin="178,101,0,0" VerticalAlignment="Top" Width="132"/>
+            <Label Content="CARÁTULA" HorizontalAlignment="Left" Margin="331,101,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblCaratula" Content="" HorizontalAlignment="Left" Margin="408,101,0,0" VerticalAlignment="Top" Width="175"/>
+            <Label Content="TRIBUNAL" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblTribunal" Content="" HorizontalAlignment="Left" Margin="87,132,0,0" VerticalAlignment="Top" Width="223"/>
+            <Label Content="COMUNA" HorizontalAlignment="Left" Margin="331,132,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.681,0.462"/>
+            <Label x:Name="lblComuna" Content="" HorizontalAlignment="Left" Margin="408,132,0,0" VerticalAlignment="Top" Width="175"/>
+
+        </Grid>
+        <Button x:Name="btnNuevo" Content="Nuevo" Margin="757,102,10,0" VerticalAlignment="Top" Height="23" Click="BtnNuevo_Click"/>
+        <Button x:Name="btnCerrar" Content="Cerrar" Margin="757,135,10,0" VerticalAlignment="Top" Height="23" Click="BtnCerrar_Click"/>
+
+    </Grid>
+</Window>
