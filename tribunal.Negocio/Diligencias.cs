@@ -34,7 +34,7 @@ namespace tribunal.Negocio
         public List<Diligencias> GetByCausa(int id_causa)
         {
 
-            var diligencias = CommonBC.LexEntities.DILIGENCIAS.Where(d => d.ID_CAUSA == id_causa).ToList();
+            var diligencias = CommonBC.LexEntities.DILIGENCIAS.Where(d => d.ID_CAUSA == id_causa).OrderBy(o => o.ID_DILIGENCIA).ToList();
             List<Diligencias> lista = new List<Diligencias>();
 
             foreach (var diligencia in diligencias)

@@ -57,7 +57,7 @@ namespace WPF
                 dili.Descripcion = txtDescription.Text;
                 dili.IdCausa = causa.Id;
                 var f = dili.Store(dili);
-                MessageBox.Show("Listo Ctm");
+                MessageBox.Show("Diligencia ingresada carrectamente");
                 detalle.runData(causa);
                 this.Close();
                 
